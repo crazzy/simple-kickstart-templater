@@ -12,9 +12,9 @@ Only python is required, which you probably already have. No need to install or 
 
 ## Installation
 ```
-git clone xxx
-cd xxx
-python skt.py
+git clone https://github.com/cdodd/simple-kickstart-templater.git
+cd simple-kickstart-templater
+python simple-kickstart-templater.py
 ```
 
 Once the server is running point your kickstart installation at the server (i.e. using the kernel parameter `ks=http://<your host>/`)
