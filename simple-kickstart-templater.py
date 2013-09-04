@@ -36,7 +36,7 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 pass
 
         if host_file is None:
-            self.simple_message(400, 'ERROR: No host entry found for MAC address "%s"' % mac_addr)
+            self.simple_message(404, 'ERROR: No host entry found for MAC address "%s"' % mac_addr)
             return
 
         # Get the template filename and variable data from the host file
