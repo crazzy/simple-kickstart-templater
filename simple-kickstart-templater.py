@@ -17,7 +17,7 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         try:
             kssendmac_header = self.headers.dict['x_rhn_provisioning_mac_0']
         except KeyError:
-            self.simple_message(400, 'ERROR: The "X_RHN_PROVISIONING_MAC_0" header not found, did you use the "kssendmac" kernel parameter when booting?')
+            self.simple_message(400, 'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not found, did you use the "kssendmac" kernel parameter when booting?')
             return
 
         try:
