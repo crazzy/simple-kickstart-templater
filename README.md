@@ -22,7 +22,7 @@ cd simple-kickstart-templater
 python simple-kickstart-templater.py
 ```
 
-Once the server is running point your kickstart installation at the server (i.e. using the kernel parameter `ks=http://<your host>/`)
+Once the server is running point your kickstart installation at the server (i.e. using the kernel parameter `ks=http://<your host>:8080/`)
 
 How it works
 ------------
