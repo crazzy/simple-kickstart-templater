@@ -1,8 +1,8 @@
 Simple Kickstart Templater
 ==========================
 
-What is it?
------------
+So, what is it?
+---------------
 The Simple Kickstart Templater is a small script the runs a minimal web server for serving kickstart files. It can serve different kickstart files to different hosts (based on their MAC address), and supports basic variable templating.
 
 Why would I want to use this?
