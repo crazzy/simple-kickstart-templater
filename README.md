@@ -11,6 +11,10 @@ The Simple Kickstart Templater is a small script the runs a minimal web server f
 Only python is required, which you probably already have, no external dependancies. No need to install or configure a web server, just run the script and you have a simple but flexible system for serving kickstart files with a basic level of templating.
 
 ## Installation
+This script is designed to run on Python 2.7, and has been tested on 2.7.5. It
+won't run on Python 3 however as the `BaseHTTPServer` module is not available.
+
+To download and start the script, run the following:
 ```
 git clone https://github.com/cdodd/simple-kickstart-templater.git
 simple-kickstart-templater/simple-kickstart-templater.py
