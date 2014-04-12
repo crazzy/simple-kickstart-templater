@@ -75,7 +75,7 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
 def main():
     HTTP_PORT = 8080
-    sys.stdout.write('Starting HTTP server... ')
+    sys.stdout.write('Starting HTTP server on port %d... ' % HTTP_PORT)
     try:
         httpd = BaseHTTPServer.HTTPServer(('', HTTP_PORT), RequestHandler)
     except socket.error, e:
