@@ -74,8 +74,7 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         self.simple_message(200, template_data)
 
-
-def main():
+if __name__ == '__main__':
     HTTP_PORT = 8080
     sys.stdout.write('Starting HTTP server on port %d... ' % HTTP_PORT)
     try:
@@ -85,6 +84,3 @@ def main():
     else:
         sys.stdout.write('\033[92m[OK]\033[0m\n')
         httpd.serve_forever()
-
-if __name__ == '__main__':
-    main()
