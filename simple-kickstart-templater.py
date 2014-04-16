@@ -4,11 +4,12 @@ import os
 import socket
 import sys
 
+
 # Define a HTTP request handler class for BaseHTTPServer
 class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def simple_message(self, return_code, message):
         self.send_response(return_code)
-        self.send_header('Content-Type','text/plain')
+        self.send_header('Content-Type', 'text/plain')
         self.end_headers()
         self.wfile.write(message + '\n')
 
@@ -72,6 +73,7 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             template_data = template_data.replace(k, v)
 
         self.simple_message(200, template_data)
+
 
 def main():
     HTTP_PORT = 8080
