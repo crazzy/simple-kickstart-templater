@@ -14,17 +14,26 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.wfile.write(message + '\n')
 
     def do_GET(self):
-        # Get the client MAC address from the "X_RHN_PROVISIONING_MAC_0" request header
+        # Get the client MAC address from the "X_RHN_PROVISIONING_MAC_0"
+        # request header
         try:
             kssendmac_header = self.headers.dict['x_rhn_provisioning_mac_0']
         except KeyError:
-            self.simple_message(400, 'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not found, did you use the "kssendmac" kernel parameter when booting?')
+            self.simple_message(
+                400,
+                'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not found, '
+                'did you use the "kssendmac" kernel parameter when booting?',
+            )
             return
 
         try:
             mac_addr = kssendmac_header.split()[1]
         except IndexError:
-            self.simple_message(400, 'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not in the expected format')
+            self.simple_message(
+                400,
+                'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not in the '
+                'expected format',
+            )
             return
 
         # Find the host file that contains the given MAC address
@@ -37,7 +46,10 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 pass
 
         if host_file is None:
-            self.simple_message(404, 'ERROR: No host entry found for MAC address "%s"' % mac_addr)
+            self.simple_message(
+                404,
+                'ERROR: No host entry found for MAC address "%s"' % mac_addr,
+            )
             return
 
         # Get the template filename and variable data from the host file
@@ -46,7 +58,10 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         try:
             host_data = open(os.path.join('hosts', host_file)).readlines()
         except IOError:
-            self.simple_message(503, 'ERROR: Could not open host file "%s"' % host_file)
+            self.simple_message(
+                503,
+                'ERROR: Could not open host file "%s"' % host_file,
+            )
             return
 
         # Parse the template name and template variables
@@ -58,14 +73,20 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         # Check if the template filename was found in the host file
         if template_file is None:
-            self.simple_message(503, 'ERROR: Template filename not found in host file')
+            self.simple_message(
+                503,
+                'ERROR: Template filename not found in host file',
+            )
             return
 
         # Read the kickstart template
         try:
             template_data = open(os.path.join('templates', template_file)).read()
         except IOError:
-            self.simple_message(503, 'ERROR: Could not open template file "templates/%s"' % template_file)
+            self.simple_message(
+                503,
+                'ERROR: Could not open template file "templates/%s"' % template_file,
+            )
             return
 
         # Replace the variable placeholders in the template data
