@@ -29,7 +29,11 @@ simple-kickstart-templater/simple-kickstart-templater.py
 ```
 
 Once the server is running point your kickstart installation at the server
-(i.e. using the kernel parameter `ks=http://<your host>:8080/`)
+(i.e. using the kernel parameter `linux ks=http://<your host>:8080/ kssendmac`)
+
+Make sure to include the `kssendmac` option as this is required for the client
+to send the `X_RHN_PROVISIONING_MAC_0` header, which the template system uses
+to identify which kickstart file to serve.
 
 ## How it works
 1. Get the clients MAC address from the `X_RHN_PROVISIONING_MAC_0` header.
