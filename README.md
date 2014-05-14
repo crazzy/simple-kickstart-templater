@@ -43,7 +43,8 @@ matching MAC address.
 1. Replace the placeholder variables in the template with the data from the
 host file
 
-Template variables are defined by starting with %% in the host file.
+Template variables are defined by wrapping a variable name with double percent
+characters (e.g. `%%KEYBOARD%%`).
 
 ## Example host file
 ```
