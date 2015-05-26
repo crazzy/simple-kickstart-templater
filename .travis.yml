@@ -1,0 +1,11 @@
+language: python
+sudo: false
+python:
+  - "2.7"
+install:
+  - pip install --use-mirrors pep8 pyflakes
+script:
+  - pep8 --version
+  - pep8 --ignore=E501 simple-kickstart-templater.py
+  - pyflakes --version
+  - pyflakes simple-kickstart-templater.py
