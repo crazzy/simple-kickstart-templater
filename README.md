@@ -1,5 +1,7 @@
 # Simple Kickstart Templater
 
+[![Build Status](https://travis-ci.org/cdodd/simple-kickstart-templater.svg?branch=master)](https://travis-ci.org/cdodd/simple-kickstart-templater)
+
 ## So, what is it?
 The Simple Kickstart Templater is a small script the runs a minimal web server
 for serving kickstart files. It can serve different kickstart files to
