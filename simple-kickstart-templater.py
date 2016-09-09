@@ -14,14 +14,14 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.wfile.write(message + '\n')
 
     def do_GET(self):
-        # Get the client MAC address from the "X_RHN_PROVISIONING_MAC_0"
+        # Get the client MAC address from the "X-RHN-Provisioning-MAC-0"
         # request header
         try:
-            kssendmac_header = self.headers.dict['x_rhn_provisioning_mac_0']
+            kssendmac_header = self.headers.dict['x-rhn-provisioning-mac-0']
         except KeyError:
             self.simple_message(
                 400,
-                'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not found, '
+                'ERROR: The "X-RHN-Provisioning-MAC-0" header was not found, '
                 'did you use the "kssendmac" kernel parameter when booting?',
             )
             return
@@ -31,7 +31,7 @@ class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         except IndexError:
             self.simple_message(
                 400,
-                'ERROR: The "X_RHN_PROVISIONING_MAC_0" header was not in the '
+                'ERROR: The "X-RHN-Provisioning-MAC-0" header was not in the '
                 'expected format',
             )
             return
